@@ -55,5 +55,5 @@ def index():
     return render_template("index.html", response=response)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000, host="0.0.0.0")
+    app.run(port=10000, host="0.0.0.0")
 
