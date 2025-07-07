@@ -5,6 +5,7 @@ from langchain.chains import RetrievalQA
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import os
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
 
@@ -13,9 +14,9 @@ embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-Mi
 db = FAISS.load_local("vectorstore", embedding_model, allow_dangerous_deserialization=True)
 
 # Load Groq LLM
-llm = ChatGroq(
-    api_key=os.getenv("GROQ_API_KEY"),
-    model_name="llama3-8b-8192"
+llm = ChatGoogleGenerativeAI(
+    google_api_key=os.getenv("GEMINI_API_KEY"),
+    model="gemini-2.5-flash"
 )
 
 # Prompt template
